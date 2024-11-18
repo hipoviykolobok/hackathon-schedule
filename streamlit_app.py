@@ -155,8 +155,8 @@ if st.sidebar.button("Показать расписание"):
         query += " AND schedule.lesson_type = ?"
         params.append(selected_type)
     if selected_type:
-        query += " AND schedule.week = ?"
-        params.append(selected_type)
+        query += " AND schedule.week = ?, ?"
+        params.append(selected_type, "Каждая неделя")
     
     schedule = get_data(query, params)
     if schedule.empty:
