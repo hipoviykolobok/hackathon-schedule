@@ -111,6 +111,7 @@ selected_type = st.sidebar.selectbox("Тип занятия", [""] + types_of_cl
 
 # Определяем день недели, если выбрана дата
 day_of_week = None
+
 if selected_date:
     selected_date = datetime.strptime(str(selected_date), '%Y-%m-%d')
     day_of_week = get_day_of_week(selected_date)
@@ -154,9 +155,13 @@ if st.sidebar.button("Показать расписание"):
     if selected_type:
         query += " AND schedule.lesson_type = ?"
         params.append(selected_type)
-    if selected_type:
-        query += " AND schedule.week = ?, ?"
-        params.append(selected_type, "Каждая неделя")
+    if selectedtype:
+        if selectedtype == "Четная неделя":
+            query += " and (schedule.week = ?, schedule.week = ?)"
+            params.append(selectedtype, "Каждая неделя")
+        else:
+            query += " and schedule.week = ?, ?"
+            params.append(selectedtype, "Каждая неделя")
     
     schedule = get_data(query, params)
     if schedule.empty:
