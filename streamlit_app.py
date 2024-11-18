@@ -2,9 +2,9 @@ import sqlite3
 import pandas as pd
 import streamlit as st
 from datetime import datetime
-st.html('<head><script src="https://telegram.org/js/telegram-web-app.js"></script></head>')
 
 st.set_page_config(page_title="Расписание занятий", page_icon="📅", layout="wide")
+st.html('<head><script src="https://telegram.org/js/telegram-web-app.js"></script></head>')
 
 # CSS стили с адаптацией к темному и светлому режиму
 st.markdown("""
