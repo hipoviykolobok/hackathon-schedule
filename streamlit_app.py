@@ -82,6 +82,12 @@ def get_days_of_week():
     except sqlite3.Error as e:
         st.error(f"Ошибка при получении данных из таблицы days_of_week: {e}")
         return []
+        
+def get_week_parity(date):
+    start_date = datetime(2024, 9, 2)
+    delta = date - start_date
+    week_number = delta.days // 7
+    return 'Нечетная неделя' if week_number % 2 == 0 else 'Четная неделя'
 
 def get_day_of_week(date):
     days_of_week = get_days_of_week()
@@ -111,6 +117,7 @@ day_of_week = None
 if selected_date:
     selected_date = datetime.strptime(str(selected_date), '%Y-%m-%d')
     day_of_week = get_day_of_week(selected_date)
+    week_parity = get_week_parity(selected_date)
     st.write(f"Выбранная дата: {selected_date.date()}, {day_of_week}")
 
 if st.sidebar.button("Показать расписание"):
@@ -152,7 +159,7 @@ if st.sidebar.button("Показать расписание"):
         params.append(selected_type)
     if selected_type:
         query += " AND schedule.week = ?"
-        params.append(selected_week)
+        params.append(selected_type)
     
     schedule = get_data(query, params)
     if schedule.empty:
