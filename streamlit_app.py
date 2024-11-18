@@ -122,7 +122,7 @@ if st.sidebar.button("Показать расписание"):
             days_of_week.name AS "День недели",
             schedule.room AS "Аудитория",
             groups.name AS "Группа",
-            schedule.lesson_type AS "Тип занятия"
+            schedule.lesson_type AS "Тип занятия",
             schedule.week AS "Тип недели"
         FROM schedule
         JOIN disciplines ON schedule.discipline_id = disciplines.id
