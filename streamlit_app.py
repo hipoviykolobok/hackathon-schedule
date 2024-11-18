@@ -111,7 +111,7 @@ selected_type = st.sidebar.selectbox("Тип занятия", [""] + types_of_cl
 
 # Определяем день недели, если выбрана дата
 day_of_week = None
-
+week_parity = None
 if selected_date:
     selected_date = datetime.strptime(str(selected_date), '%Y-%m-%d')
     day_of_week = get_day_of_week(selected_date)
