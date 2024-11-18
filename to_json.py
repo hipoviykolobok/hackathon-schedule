@@ -80,7 +80,7 @@ for sheet_name in sheet_names:
             # Разделяем строку на предмет, преподавателя и аудиторию
             lesson_type = None
             subject = None
-            teacher = "НУ"
+            teacher = "Н.У."
             room = None
 
             # Определяем тип занятия
