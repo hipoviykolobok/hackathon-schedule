@@ -155,12 +155,13 @@ if st.sidebar.button("Показать расписание"):
     if selected_type:
         query += " AND schedule.lesson_type = ?"
         params.append(selected_type)
-    if  week_parity == "Четная неделя":
-        query += " and (schedule.week = ? or schedule.week = ?)"
-        params.append(selected_type, "Каждая неделя")
-    if week_parity == "Нечетная неделя":
-        query += " and (schedule.week = ? or schedule.week = ?)"
-        params.append(selected_type, "Каждая неделя")
+    if week_parity == "Четная неделя":
+        query += " AND (schedule.week = ? OR schedule.week = ?)"
+        params.extend(["Четная неделя", "Каждая неделя"])
+    elif week_parity == "Нечетная неделя":
+        query += " AND (schedule.week = ? OR schedule.week = ?)"
+        params.extend(["Нечетная неделя", "Каждая неделя"])
+
     
     schedule = get_data(query, params)
     if schedule.empty:
