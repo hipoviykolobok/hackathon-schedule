@@ -99,7 +99,6 @@ teachers = get_choices("SELECT name FROM teachers")
 disciplines = get_choices("SELECT name FROM disciplines")
 audiences = get_choices("SELECT DISTINCT room FROM schedule")  # Используем таблицу schedule для аудиторий
 types_of_classes = ['Лекция', 'Практика','Лабораторная']
-types_of_week = get_choices("SELECT DISTINCT week FROM schedule")
 
 # Селектбоксы для выбора параметров
 st.sidebar.header("Фильтры")
