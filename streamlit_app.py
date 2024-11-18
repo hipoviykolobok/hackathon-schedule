@@ -115,7 +115,7 @@ if selected_date:
     selected_date = datetime.strptime(str(selected_date), '%Y-%m-%d')
     day_of_week = get_day_of_week(selected_date)
     week_parity = get_week_parity(selected_date)
-    st.write(f"Выбранная дата: {selected_date.date()}, {day_of_week}")
+    st.write(f"Выбранная дата: {selected_date.date()}, {day_of_week}, {week_parity}.")
 
 if st.sidebar.button("Показать расписание"):
     query = """
