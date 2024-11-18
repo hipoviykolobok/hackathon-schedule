@@ -108,8 +108,6 @@ selected_teacher = st.sidebar.selectbox("Преподаватель", [""] + tea
 selected_discipline = st.sidebar.selectbox("Дисциплина", [""] + disciplines)
 selected_audience = st.sidebar.selectbox("Аудитория", [""] + audiences)
 selected_type = st.sidebar.selectbox("Тип занятия", [""] + types_of_classes)
-selected_week = st.sidebar.selectbox("Тип недели", [""] + types_of_week)
-
 
 # Определяем день недели, если выбрана дата
 day_of_week = None
